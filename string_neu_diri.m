@@ -7,7 +7,7 @@ linear_mass_density = 0.01;
 tension_force = 100;
 
 % viscous damping coefficent [N*s/m]
-b = 0;
+b = 0.5;
 
 % String length (L)
 string_length = 1;
@@ -33,10 +33,10 @@ u = 1 - beta * dt;
 
 % Neumann - Dirichlet
 
-s = x.^2 .* (string_length - x);
-g = zeros(M, 1);
-h = zeros(1, N);
-r = zeros(1, N);
+s = sin(3 * pi * x + pi / 4);
+g = ones(M, 1);
+h = 3 * pi / sqrt(2) * ones(1, N);
+r = sin(3 * pi * string_length + pi / 4) * ones(1, N);
 
 f(:, 1) = s;
 f(1, 2) = p * (f(2, 1) - f(1, 1) - dx * h(1)) + f(1, 1) +u * dt * g(1);
@@ -57,13 +57,21 @@ surf(f);
 zlabel('y');
 xlabel('n');
 ylabel('m');
+
+% damping must be different than 0
+figure(2)
+plot(plot_x, h(1) * plot_x + (r(1) - h(1)), plot_y, f(:, N));
+legend({'equilibrium', 'last iteration'})
+xlabel('x');
+ylabel('y');
+
 X = 1:M;
 fig = figure(3);
 axh = axes('Parent', fig);
 i = 1;
 ph = plot(axh, X, f(:, i));
 xlim([0 M]);
-ylim([-0.5 0.5]);
+ylim([-12 12]);
 
 while i < M
     i = i + 1;

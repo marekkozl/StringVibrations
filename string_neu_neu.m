@@ -33,9 +33,9 @@ u = 1 - beta * dt;
 
 % Neumann - Neumann
 s = sin(3 * pi * x + pi / 4);
-g = x .* (1 - x);
-h = sin(x) * ones(1, N);
-k = -3 * pi * sqrt(2) / 2 * ones(1, N);
+g = ones(M, 1);
+h = 3 * pi * cos(pi * (1/4 + 3 * 0)) * ones(1, N);
+k = 3 * pi * cos(pi * (1/4 + 3 * string_length)) * ones(1, N);
 
 f(:, 1) = s;
 f(1, 2) = p * (f(2, 1) - f(1, 1) - dx * h(1)) + f(1, 1) +u * dt * g(1);
@@ -57,13 +57,15 @@ zlabel('y');
 xlabel('n');
 ylabel('m');
 
+% equilibrium is not possible as two neumanns are different
+
 X = 1:M;
 fig = figure(3);
 axh = axes('Parent', fig);
 i = 1;
 ph = plot(axh, X, f(:, i));
 xlim([0 M]);
-ylim([-6 6]);
+ylim([-12 6]);
 
 while i < M
     i = i + 1;

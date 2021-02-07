@@ -33,7 +33,7 @@ u = 1 - beta * dt;
 
 % Dirichlet - Neumann
 s = sin(3 * pi * x + pi / 4);
-g = x .* (1 - x);
+g = ones(M, 1);
 l = sqrt(2) / 2 * ones(1, N);
 k = -3 * pi * sqrt(2) / 2 * ones(1, N);
 
@@ -55,7 +55,7 @@ surf(f);
 zlabel('y');
 xlabel('n');
 ylabel('m');
-% damping must be set to 0
+% damping must be different than 0
 figure(2)
 plot(plot_x, k(1) * plot_x + l(1), plot_y, f(:, N));
 legend({'equilibrium', 'last iteration'})
