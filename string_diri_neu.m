@@ -63,15 +63,14 @@ xlabel('x');
 ylabel('y');
 X = 1:M;
 fig = figure(3);
-axh = axes('Parent',fig);
+axh = axes('Parent', fig);
 i = 1;
-ph = plot(axh, X,f(:,i));
+ph = plot(axh, X, f(:, i));
 xlim([0 M]);
 ylim([-6 6]);
 
 while i < M
     i = i + 1;
-    set(ph,'YData',f(:, i));
+    set(ph, 'YData', f(:, i));
     pause(0.1)
 end
-

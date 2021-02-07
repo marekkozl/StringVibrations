@@ -34,11 +34,11 @@ u = 1 - beta * dt;
 % Neumann - Neumann
 s = sin(3 * pi * x + pi / 4);
 g = x .* (1 - x);
-h = sin(x)*ones(1, N);
+h = sin(x) * ones(1, N);
 k = -3 * pi * sqrt(2) / 2 * ones(1, N);
 
 f(:, 1) = s;
-f(1, 2) = p*(f(2,1)- f(1,1)-dx*h(1)) + f(1,1) +u*dt*g(1);
+f(1, 2) = p * (f(2, 1) - f(1, 1) - dx * h(1)) + f(1, 1) +u * dt * g(1);
 f(2:M - 1, 2) = p / 2 * (f(3:M, 1) - 2 * f(2:M - 1, 1) + f(1:M - 2, 1)) + f(2:M - 1, 1) + u * dt * g(2:M - 1);
 f(M, 2) = p * (dx * k(2) - f(M, 1) + f(M - 1, 1)) + f(M, 1) + u * dt * g(M);
 
@@ -59,15 +59,14 @@ ylabel('m');
 
 X = 1:M;
 fig = figure(3);
-axh = axes('Parent',fig);
+axh = axes('Parent', fig);
 i = 1;
-ph = plot(axh, X,f(:,i));
+ph = plot(axh, X, f(:, i));
 xlim([0 M]);
 ylim([-6 6]);
 
 while i < M
     i = i + 1;
-    set(ph,'YData',f(:, i));
+    set(ph, 'YData', f(:, i));
     pause(0.1)
 end
-
