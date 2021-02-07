@@ -55,6 +55,7 @@ surf(f);
 zlabel('y');
 xlabel('n');
 ylabel('m');
+% damping must be set to 0
 figure(2)
 plot(plot_x, k(1) * plot_x + l(1), plot_y, f(:, N));
 legend({'equilibrium', 'last iteration'})
