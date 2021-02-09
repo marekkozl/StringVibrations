@@ -33,9 +33,9 @@ u = 1 - beta * dt;
 
 % Neumann - Neumann
 s = sin(3 * pi * x + pi / 4);
-g = ones(M, 1);
-h = 3 * pi * cos(pi * (1/4 + 3 * 0)) * ones(1, N);
-k = 3 * pi * cos(pi * (1/4 + 3 * string_length)) * ones(1, N);
+g = zeros(M, 1);
+h = cos(pi * (1/4 + 3 * dt)) * ones(1, N);
+k = cos(pi * (1/4 + 3 * string_length * dt)) * ones(1, N);
 
 f(:, 1) = s;
 f(1, 2) = p * (f(2, 1) - f(1, 1) - dx * h(1)) + f(1, 1) +u * dt * g(1);

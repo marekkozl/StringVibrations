@@ -35,7 +35,7 @@ u = 1 - beta * dt;
 s = sin(3 * pi * x + pi / 4);
 g = ones(M, 1);
 l = sqrt(2) / 2 * ones(1, N);
-k = -3 * pi * sqrt(2) / 2 * ones(1, N);
+k = cos(pi * (1/4 + 3 * string_length * dt)) * ones(1, N);
 
 f(:, 1) = s;
 f(1, 2:N) = l(2:N);
