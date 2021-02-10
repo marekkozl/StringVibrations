@@ -34,8 +34,8 @@ u = 1 - beta * dt;
 % Neumann - Neumann
 s = sin(3 * pi * x + pi / 4);
 g = zeros(M, 1);
-h = cos(pi * (1/4 + 3 * dt)) * ones(1, N);
-k = cos(pi * (1/4 + 3 * string_length * dt)) * ones(1, N);
+h = 3 * pi * cos(pi * (1/4 + 3 * 0)) * ones(1, N);
+k = 3 * pi * cos(pi * (1/4 + 3 * string_length)) * ones(1, N);
 
 f(:, 1) = s;
 f(1, 2) = p * (f(2, 1) - f(1, 1) - dx * h(1)) + f(1, 1) +u * dt * g(1);
@@ -65,9 +65,9 @@ axh = axes('Parent', fig);
 i = 1;
 ph = plot(axh, X, f(:, i));
 xlim([0 M]);
-ylim([-12 6]);
+ylim([-44 6]);
 
-while i < M
+while i < N
     i = i + 1;
     set(ph, 'YData', f(:, i));
     pause(0.1)

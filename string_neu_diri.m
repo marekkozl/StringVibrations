@@ -33,10 +33,10 @@ u = 1 - beta * dt;
 
 % Neumann - Dirichlet
 
-s = sin(3 * pi * x + pi / 4);
-g = zeros(M, 1);
-h = cos(pi * (1/4 + 3 * dt)) * ones(1, N);
-r = sin(3 * pi * string_length + pi / 4) * ones(1, N);
+s = -2 * x.^2 + 0.8 * x + 0.92;
+g = sin(x * 2 * pi);
+h = 0.8 * ones(1, N);
+r = -0.28 * ones(1, N);
 
 f(:, 1) = s;
 f(1, 2) = p * (f(2, 1) - f(1, 1) - dx * h(1)) + f(1, 1) +u * dt * g(1);
@@ -71,9 +71,9 @@ axh = axes('Parent', fig);
 i = 1;
 ph = plot(axh, X, f(:, i));
 xlim([0 M]);
-ylim([-12 12]);
-pause(5);
-while i < M
+ylim([-5 5]);
+
+while i < N
     i = i + 1;
     set(ph, 'YData', f(:, i));
     pause(0.1)

@@ -35,7 +35,7 @@ u = 1 - beta * dt;
 s = sin(3 * pi * x + pi / 4);
 g = ones(M, 1);
 l = sqrt(2) / 2 * ones(1, N);
-k = cos(pi * (1/4 + 3 * string_length * dt)) * ones(1, N);
+k = 3 * pi * cos(pi * (1/4 + 3 * string_length)) * ones(1, N);
 
 f(:, 1) = s;
 f(1, 2:N) = l(2:N);
@@ -67,9 +67,9 @@ axh = axes('Parent', fig);
 i = 1;
 ph = plot(axh, X, f(:, i));
 xlim([0 M]);
-ylim([-6 6]);
+ylim([-10 6]);
 
-while i < M
+while i < N
     i = i + 1;
     set(ph, 'YData', f(:, i));
     pause(0.1)
